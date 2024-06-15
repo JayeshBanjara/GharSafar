@@ -11,4 +11,7 @@ class FilterController extends GetxController {
 
   int isBuyRentSelected = 1;
 
+  RangeValues currentPriceRange = const RangeValues(3000, 60000);
+  RangeValues currentAreaRange = const RangeValues(100, 2000);
+
 }

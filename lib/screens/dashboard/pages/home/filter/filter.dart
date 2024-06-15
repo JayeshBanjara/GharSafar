@@ -311,25 +311,44 @@ class _FilterPageState extends State<FilterPage> {
                                 fontFamily: AppConstants.fontFamily)),
                         const SizedBox(height: 10.0),
 
-                        SliderTheme(
-                          data: const SliderThemeData(
-                            thumbColor: AppColors.btnColor,
-                              activeTrackColor: AppColors.btnColor,
-                              inactiveTrackColor: AppColors.grey6Color,
-                              trackHeight: 7,
+                        RangeSlider(
+                          values: filterController.currentPriceRange,
+                          min: 0,
+                          max: 100000,
+                          divisions: 1000,
+                          activeColor: Colors.blue,
+                          inactiveColor: Colors.grey,
+                          labels: RangeLabels(
+                            '₹${filterController.currentPriceRange.start.round()}',
+                            '₹${filterController.currentPriceRange.end.round()}',
                           ),
-                          child: RangeSlider(
-                            values: RangeValues(start, end),
-                            labels: RangeLabels(start.toString(), end.toString()),
-                            onChanged: (value) {
-                              setState(() {
-                                start = value.start;
-                                end = value.end;
-                              });
-                            },
-                            min: 10.0,
-                            max: 80.0,
-                          ),
+                          onChanged: (RangeValues values) {
+                            filterController.currentPriceRange = values;
+                            filterController.update();
+                          },
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '₹${filterController.currentPriceRange.start.round()}',
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: AppConstants.fontFamily,
+                                color: Colors.black
+                              ),
+                            ),
+                            Text(
+                              '₹${filterController.currentPriceRange.end.round()}',
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: AppConstants.fontFamily,
+                                  color: Colors.black
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 10.0),
 
@@ -341,26 +360,47 @@ class _FilterPageState extends State<FilterPage> {
                                 fontSize: 20,
                                 fontFamily: AppConstants.fontFamily)),
                         const SizedBox(height: 10.0),
-                        SliderTheme(
-                          data: const SliderThemeData(
-                              activeTrackColor: AppColors.btnColor,
-                              thumbColor: AppColors.btnColor,
-                            inactiveTrackColor: AppColors.grey6Color,
-                            trackHeight: 7,
+
+                        RangeSlider(
+                          values: filterController.currentAreaRange,
+                          min: 0,
+                          max: 10000,
+                          divisions: 100,
+                          activeColor: Colors.blue,
+                          inactiveColor: Colors.grey,
+                          labels: RangeLabels(
+                            '₹${filterController.currentAreaRange.start.round()}',
+                            '₹${filterController.currentAreaRange.end.round()}',
                           ),
-                          child: RangeSlider(
-                            values: RangeValues(start1, end1),
-                            labels: RangeLabels(start1.toString(), end1.toString()),
-                            onChanged: (value) {
-                              setState(() {
-                                start1 = value.start;
-                                end1 = value.end;
-                              });
-                            },
-                            min: 10.0,
-                            max: 80.0,
-                          ),
+                          onChanged: (RangeValues values) {
+                            filterController.currentAreaRange = values;
+                            filterController.update();
+                          },
                         ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '${filterController.currentAreaRange.start.round()} sq',
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: AppConstants.fontFamily,
+                                  color: Colors.black
+                              ),
+                            ),
+                            Text(
+                              '${filterController.currentAreaRange.end.round()} sq',
+                              style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: AppConstants.fontFamily,
+                                  color: Colors.black
+                              ),
+                            ),
+                          ],
+                        ),
+
                         const SizedBox(height: 10.0),
 
                         const Text('Bedrooms',

@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:ghar_safar/screens/dashboard/pages/home/place_details/photo_view/photo_view.dart';
 import 'package:ghar_safar/screens/dashboard/pages/home/place_details/place_details_controller.dart';
+import 'package:ghar_safar/utils/global.dart';
 
-import '../../../../../utils/global.dart';
 import 'compare/compare.dart';
 
 class PlaceDetailsPage extends StatefulWidget {
