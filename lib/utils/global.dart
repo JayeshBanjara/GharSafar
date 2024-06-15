@@ -36,6 +36,54 @@ abstract class ImageConstants {
   static const String icUnselectedVilla = 'assets/images/ic_unselected_villa.svg';
   static const String icSelectedVilla = 'assets/images/ic_selected_villa.svg';
   static const String icSqft = 'assets/images/ic_sqft.svg';
+  static const String tipsImg = 'assets/images/tips_img.png';
+  static const String icHousingLoan = 'assets/images/ic_housing_loan.svg';
+  static const String icLegalAdvice = 'assets/images/ic_legal_advice.svg';
+  static const String imgConsultantSample = 'assets/images/img_consultant_sample.png';
+  static const String icBriefcase = 'assets/images/ic_briefcase.svg';
+  static const String icStar = 'assets/images/ic_star.svg';
+  static const String icHeart = 'assets/images/ic_heart.svg';
+  static const String buySampleBanner = 'assets/images/buy_sample_banner.png';
+  static const String imgBakeri = 'assets/images/img_bakeri.png';
+  static const String imgUpcoming = 'assets/images/img_upcoming.png';
+  static const String icShadow = 'assets/images/ic_shadow.svg';
+  static const String imgBroker = 'assets/images/img_broker.png';
+  static const String icVerified = 'assets/images/ic_verified.svg';
+  static const String icDot = 'assets/images/ic_dot.svg';
+  static const String icBack = 'assets/images/ic_back_arrow.svg';
+  static const String icPerson = 'assets/images/ic_person1.svg';
+  static const String icArrow = 'assets/images/ic_arrow.svg';
+  static const String icNotification = 'assets/images/ic_notification1.svg';
+  static const String icOrder = 'assets/images/ic_order.svg';
+  static const String icPrivacy = 'assets/images/ic_privacy.svg';
+  static const String icTerms = 'assets/images/ic_terms.svg';
+  static const String icLogout = 'assets/images/ic_logout.svg';
+  static const String icFilter = 'assets/images/ic_filter.svg';
+  static const String icCross = 'assets/images/ic_cross.svg';
+  static const String icLogOut1 = 'assets/images/ic_logout1.svg';
+  static const String imgSampleTips = 'assets/images/img_sample_tips.png';
+  static const String icHouse = 'assets/images/ic_house.svg';
+  static const String icVilla = 'assets/images/ic_villa.svg';
+  static const String icApartment = 'assets/images/ic_apartment.svg';
+  static const String icFlat = 'assets/images/ic_flat.svg';
+  static const String icShadow1 = 'assets/images/ic_shadow1.svg';
+  static const String imgSamplePlace = 'assets/images/img_sample_place.png';
+  static const String img360 = 'assets/images/img_360.svg';
+  static const String icHeartRound = 'assets/images/ic_heart_round.svg';
+  static const String icMax = 'assets/images/ic_max.svg';
+  static const String imgGallery = 'assets/images/img_gallery.png';
+  static const String icSearch = 'assets/images/ic_search.svg';
+  static const String imgExistingSample = 'assets/images/img_existing_sample.png';
+  static const String imgProjectSample = 'assets/images/img_project_sample.png';
+  static const String imgRenti = 'assets/images/img_renti.png';
+  static const String icVerified1 = 'assets/images/ic_verified1.svg';
+  static const String icGlobe = 'assets/images/ic_globe.svg';
+  static const String icFacebook = 'assets/images/ic_facebook.svg';
+  static const String icInsta = 'assets/images/ic_insta.svg';
+  static const String icLinkdin = 'assets/images/ic_linkdin.svg';
+  static const String icTwitter = 'assets/images/ic_twitter.svg';
+  static const String icSend = 'assets/images/ic_send.svg';
+  static const String imgBlueRenti = 'assets/images/ic_blue_renti.png';
 }
 
 abstract class AppColors {
@@ -57,6 +105,28 @@ abstract class AppColors {
   static const Color textColor = Color(0xFF323232);
   static const Color greyTextColor = Color(0xFF838383);
   static const Color darkBlueColor = Color(0xFF0F112B);
+  static const Color blackColor = Color(0xFF222222);
+  static const Color greyBgColor = Color(0xFFF2F2F2);
+  static const Color gradiantColor = Color(0xFF0F112B);
+  static const Color grey12Color = Color(0xFFD9D9D9);
+  static const Color darkWhiteColor = Color(0xFFFFEDED);
+  static const Color dividerColor = Color(0xFFE3E3E3);
+  static const Color black1Color = Color(0xFF323232);
+  static const Color black2Color = Color(0xFF000000);
+  static const Color lightGreyColor = Color(0xFFFBFBFB);
+  static const Color darkBlue1Color = Color(0xFF111827);
+  static const Color lightGrey2Color = Color(0xFF999999);
+  static const Color black3Color = Color(0xFF363636);
+  static const Color black4Color = Color(0xFF555555);
+  static const Color greyIcColor = Color(0xFFA2A2A2);
+  static const Color greyBorderColor = Color(0xFFE3E3E3);
+  static const Color grey14Color = Color(0xFF555555);
+  static const Color grey15Color = Color(0xFFF9F9F9);
+  static const Color grey16Color = Color(0xFFF5F5F5);
+  static const Color hintColor = Color(0xFFAEAEAE);
+  static const Color lightBlueColor = Color(0xFFF1FBFF);
+  static const Color greenColor = Color(0xFF00AD3B);
+  static const Color redColor = Color(0xFFFF5858);
 }
 
 abstract class AppConstants {

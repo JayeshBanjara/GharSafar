@@ -4,7 +4,9 @@ import 'package:otp_pin_field/otp_pin_field.dart';
 
 class WelcomeScreenController extends GetxController {
 
-  bool isBuySelected = true;
-  bool isSellSelected = false;
+  bool isCustomerSelected = true;
+  bool isBuilderSelected = false;
+  bool isBrokerSelected = false;
   bool isConsultantSelected = false;
+  bool isVastuSelected = false;
 }
