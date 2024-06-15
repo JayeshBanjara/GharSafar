@@ -53,7 +53,7 @@ class _DashboardState extends State<Dashboard> {
               bottomNavItem(
                   selectedIcon: ImageConstants.selectedVaastu,
                   unSelectedIcon: ImageConstants.unselectedVaastu,
-                  label: 'Vaastu'),
+                  label: 'Reels'),
               bottomNavItem(
                   selectedIcon: ImageConstants.selectedConsultant,
                   unSelectedIcon: ImageConstants.unselectedConsultant,

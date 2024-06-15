@@ -56,49 +56,102 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   ),
                   const SizedBox(height: 15),
                   const Text(
-                    'Choose a few options if you need to.',
+                    'I am...',
                     style: TextStyle(
-                        color: AppColors.greyTextColor,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
+                        color: AppColors.btnColor,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20,
                         fontFamily: AppConstants.fontFamily),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 15),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      InkWell(
-                        onTap: () {
-                          welcomeScreenController.isBuySelected = true;
-                          welcomeScreenController.isSellSelected = false;
-                          welcomeScreenController.isConsultantSelected = false;
-                          welcomeScreenController.update();
-                        },
-                        child: getChipWidget(
-                            'Buy', welcomeScreenController.isBuySelected),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            welcomeScreenController.isCustomerSelected = true;
+                            welcomeScreenController.isBuilderSelected = false;
+                            welcomeScreenController.isBrokerSelected = false;
+                            welcomeScreenController.isConsultantSelected = false;
+                            welcomeScreenController.isVastuSelected = false;
+                            welcomeScreenController.update();
+                          },
+                          child: getChipWidget(
+                              'Customer', welcomeScreenController.isCustomerSelected),
+                        ),
                       ),
-                      const SizedBox(width: 5),
-                      InkWell(
-                        onTap: () {
-                          welcomeScreenController.isBuySelected = false;
-                          welcomeScreenController.isSellSelected = true;
-                          welcomeScreenController.isConsultantSelected = false;
-                          welcomeScreenController.update();
-                        },
-                        child: getChipWidget(
-                            'Sell', welcomeScreenController.isSellSelected),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            welcomeScreenController.isCustomerSelected = false;
+                            welcomeScreenController.isBuilderSelected = true;
+                            welcomeScreenController.isBrokerSelected = false;
+                            welcomeScreenController.isConsultantSelected = false;
+                            welcomeScreenController.isVastuSelected = false;
+                            welcomeScreenController.update();
+                          },
+                          child: getChipWidget(
+                              'Builder', welcomeScreenController.isBuilderSelected),
+                        ),
                       ),
-                      const SizedBox(width: 5),
-                      InkWell(
-                        onTap: () {
-                          welcomeScreenController.isBuySelected = false;
-                          welcomeScreenController.isSellSelected = false;
-                          welcomeScreenController.isConsultantSelected = true;
-                          welcomeScreenController.update();
-                        },
-                        child: getChipWidget('Consultant',
-                            welcomeScreenController.isConsultantSelected),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            welcomeScreenController.isCustomerSelected = false;
+                            welcomeScreenController.isBuilderSelected = false;
+                            welcomeScreenController.isBrokerSelected = true;
+                            welcomeScreenController.isConsultantSelected = false;
+                            welcomeScreenController.isVastuSelected = false;
+                            welcomeScreenController.update();
+                          },
+                          child: getChipWidget(
+                              'Broker', welcomeScreenController.isBrokerSelected),
+                        ),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            welcomeScreenController.isCustomerSelected = false;
+                            welcomeScreenController.isBuilderSelected = false;
+                            welcomeScreenController.isBrokerSelected = false;
+                            welcomeScreenController.isConsultantSelected = true;
+                            welcomeScreenController.isVastuSelected = false;
+                            welcomeScreenController.update();
+                          },
+                          child: getChipWidget('Consultant',
+                              welcomeScreenController.isConsultantSelected),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            welcomeScreenController.isCustomerSelected = false;
+                            welcomeScreenController.isBuilderSelected = false;
+                            welcomeScreenController.isBrokerSelected = false;
+                            welcomeScreenController.isConsultantSelected = false;
+                            welcomeScreenController.isVastuSelected = true;
+                            welcomeScreenController.update();
+                          },
+                          child: getChipWidget(
+                              'Vastu Export', welcomeScreenController.isVastuSelected),
+                        ),
+                      ),
+                      const SizedBox(width: 15),
+                      Expanded(
+                        child:Container(),
                       )
                     ],
                   ),
@@ -111,7 +164,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => LoginScreen(
                                   isBuyer:
-                                      welcomeScreenController.isBuySelected)));
+                                      welcomeScreenController.isCustomerSelected)));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primary,

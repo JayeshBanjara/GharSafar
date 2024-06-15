@@ -4,4 +4,9 @@ import 'package:otp_pin_field/otp_pin_field.dart';
 
 class BuyController extends GetxController {
 
+  bool isHomeSelected = true;
+  bool isApartmentsSelected = false;
+  bool isFlatsSelected = false;
+  bool isVillaSelected = false;
+
 }
