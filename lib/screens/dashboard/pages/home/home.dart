@@ -106,12 +106,9 @@ class _HomePageState extends State<HomePage> {
                                 padding: const EdgeInsets.all(7.0),
                                 child: Row(
                                   children: [
-                                    const Icon(
-                                      Icons.search,
-                                      size: 24.0,
-                                      color: AppColors.grey3Color,
-                                    ),
                                     const SizedBox(width: 5.0),
+                                     SvgPicture.asset(ImageConstants.icSearch,color: AppColors.grey10Color,),
+                                    const SizedBox(width: 10.0),
                                     const Expanded(
                                         child: Column(
                                       crossAxisAlignment:
@@ -316,7 +313,7 @@ class _HomePageState extends State<HomePage> {
                                           Navigator.of(context).push(
                                               MaterialPageRoute(builder: (context) => const PlaceDetailsPage()));
                                         } ,
-                                        child: mainItem());
+                                        child: mainItem(index));
                                   })),
                           const SizedBox(height: 15.0),
 
@@ -461,7 +458,7 @@ class _HomePageState extends State<HomePage> {
                                     itemCount: 5,
                                     itemBuilder:
                                         (BuildContext context, int index) {
-                                      return mainItem();
+                                      return mainItem2(index);
                                     }),
                               )),
                           const SizedBox(height: 15.0),
@@ -480,7 +477,7 @@ class _HomePageState extends State<HomePage> {
                                   itemCount: 5,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return consultantItem();
+                                    return consultantItem(index);
                                   })),
                           const SizedBox(height: 15.0),
                           headerWithViewMore(
@@ -503,7 +500,7 @@ class _HomePageState extends State<HomePage> {
                                     itemCount: 5,
                                     itemBuilder:
                                         (BuildContext context, int index) {
-                                      return mainItem();
+                                      return mainItem3(index);
                                     }),
                               )),
                           const SizedBox(height: 20.0),
@@ -594,7 +591,7 @@ class _HomePageState extends State<HomePage> {
     );
   }*/
 
-  Widget consultantItem() {
+  Widget consultantItem(int index) {
     return Row(
       children: [
         Container(
@@ -630,8 +627,16 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
                             fontFamily: AppConstants.fontFamily)),
-                    SvgPicture.asset(ImageConstants.icFavouriteUnselected,
-                        width: 18.0, height: 16.0)
+                    InkWell(
+                      onTap: (){
+                        homeController.isConsultantFavouriteSelected[index] = !homeController.isConsultantFavouriteSelected[index];
+                        homeController.update();
+                      },
+                      child: SvgPicture.asset(homeController.isConsultantFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
                   ],
                 ),
               ),
@@ -666,38 +671,41 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               const SizedBox(height: 10.0),
-               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 10),
-                    decoration: BoxDecoration(
-                        color: AppColors.lightBlue2,
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(15.0)),
-                    child: const Text('Home Interiors',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: AppColors.grey10Color,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            fontFamily: AppConstants.fontFamily)),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 10),
-                    decoration: BoxDecoration(
-                        color: AppColors.lightBlue2,
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(15.0)),
-                    child: const Text('Property Lawyers',
-                        style: TextStyle(
-                            color: AppColors.grey10Color,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            fontFamily: AppConstants.fontFamily))
-                  ),
-                ],
-              )
+               Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                 child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                      decoration: BoxDecoration(
+                          color: AppColors.lightBlue2,
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(15.0)),
+                      child: const Text('Home Interiors',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: AppColors.grey10Color,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              fontFamily: AppConstants.fontFamily)),
+                    ),
+                    const SizedBox(width: 10.0),
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                      decoration: BoxDecoration(
+                          color: AppColors.lightBlue2,
+                          border: Border.all(color: Colors.white),
+                          borderRadius: BorderRadius.circular(15.0)),
+                      child: const Text('Property Lawyers',
+                          style: TextStyle(
+                              color: AppColors.grey10Color,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              fontFamily: AppConstants.fontFamily))
+                    ),
+                  ],
+                               ),
+               )
             ],
           ),
         ),
@@ -706,7 +714,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget mainItem() {
+  Widget mainItem(int index) {
     return Row(
       children: [
         Container(
@@ -742,8 +750,208 @@ class _HomePageState extends State<HomePage> {
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                             fontFamily: AppConstants.fontFamily)),
-                    SvgPicture.asset(ImageConstants.icFavouriteUnselected,
-                        width: 18.0, height: 16.0)
+                    InkWell(
+                      onTap: (){
+                        homeController.isFavouriteSelected[index] = !homeController.isFavouriteSelected[index];
+                        homeController.update();
+                      },
+                      child: SvgPicture.asset(homeController.isFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    ImageConstants.icLocation,
+                    width: 9.0,
+                    height: 10.0,
+                  ),
+                  const SizedBox(width: 5.0),
+                  const Text('2517 Washington Ave. Manchester, New Jersey.',
+                      style: TextStyle(
+                          color: AppColors.grey10Color,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12,
+                          fontFamily: AppConstants.fontFamily))
+                ],
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      houseDetails(label: '6', icon: ImageConstants.icBed),
+                      const SizedBox(width: 5.0),
+                      houseDetails(label: '7', icon: ImageConstants.icBath),
+                      const SizedBox(width: 5.0),
+                      houseDetails(label: '2050', icon: ImageConstants.icSqft),
+                      const SizedBox(width: 5.0),
+                    ],
+                  ),
+                  const Text('₹850,00000',
+                      style: TextStyle(
+                          color: AppColors.blackColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          fontFamily: AppConstants.fontFamily))
+                ],
+              )
+            ],
+          ),
+        ),
+        const SizedBox(width: 10.0)
+      ],
+    );
+  }
+
+  Widget mainItem2(int index) {
+    return Row(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width / 1.2,
+          padding: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: AppColors.grey6Color),
+              borderRadius: BorderRadius.circular(25.0)),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(25.0),
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 10.0),
+                  color: AppColors.grey7Color,
+                  child: Image.asset(
+                    ImageConstants.tempHomeSample1,
+                    width: MediaQuery.of(context).size.width,
+                    height: 160.0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Sahe Luxury House',
+                        style: TextStyle(
+                            color: AppColors.blackColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            fontFamily: AppConstants.fontFamily)),
+                    InkWell(
+                      onTap: (){
+                        homeController.isBuyFavouriteSelected[index] = !homeController.isBuyFavouriteSelected[index];
+                        homeController.update();
+                      },
+                      child: SvgPicture.asset(homeController.isBuyFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    ImageConstants.icLocation,
+                    width: 9.0,
+                    height: 10.0,
+                  ),
+                  const SizedBox(width: 5.0),
+                  const Text('2517 Washington Ave. Manchester, New Jersey.',
+                      style: TextStyle(
+                          color: AppColors.grey10Color,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12,
+                          fontFamily: AppConstants.fontFamily))
+                ],
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      houseDetails(label: '6', icon: ImageConstants.icBed),
+                      const SizedBox(width: 5.0),
+                      houseDetails(label: '7', icon: ImageConstants.icBath),
+                      const SizedBox(width: 5.0),
+                      houseDetails(label: '2050', icon: ImageConstants.icSqft),
+                      const SizedBox(width: 5.0),
+                    ],
+                  ),
+                  const Text('₹850,00000',
+                      style: TextStyle(
+                          color: AppColors.blackColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          fontFamily: AppConstants.fontFamily))
+                ],
+              )
+            ],
+          ),
+        ),
+        const SizedBox(width: 10.0)
+      ],
+    );
+  }
+
+  Widget mainItem3(int index) {
+    return Row(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width / 1.2,
+          padding: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: AppColors.grey6Color),
+              borderRadius: BorderRadius.circular(25.0)),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(25.0),
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 10.0),
+                  color: AppColors.grey7Color,
+                  child: Image.asset(
+                    ImageConstants.tempHomeSample1,
+                    width: MediaQuery.of(context).size.width,
+                    height: 160.0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Sahe Luxury House',
+                        style: TextStyle(
+                            color: AppColors.blackColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            fontFamily: AppConstants.fontFamily)),
+                    InkWell(
+                      onTap: (){
+                        homeController.isRentFavouriteSelected[index] = !homeController.isRentFavouriteSelected[index];
+                        homeController.update();
+                      },
+                      child: SvgPicture.asset(homeController.isRentFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
                   ],
                 ),
               ),

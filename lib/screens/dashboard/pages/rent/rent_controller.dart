@@ -5,4 +5,8 @@ class RentController extends GetxController {
   bool isApartmentsSelected = false;
   bool isFlatsSelected = false;
   bool isVillaSelected = false;
+
+  List<bool> isFavouriteSelected = [false,false];
+  List<bool> isFavouriteSelected1 = [false];
+  List<bool> isRecentFavouriteSelected = [false,false,false,false,false];
 }

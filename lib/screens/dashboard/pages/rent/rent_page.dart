@@ -91,12 +91,9 @@ class _RentPageState extends State<RentPage> {
                               padding: const EdgeInsets.all(7),
                               child: Row(
                                 children: [
-                                  const Icon(
-                                    Icons.search,
-                                    size: 24.0,
-                                    color: AppColors.grey3Color,
-                                  ),
                                   const SizedBox(width: 5.0),
+                                  SvgPicture.asset(ImageConstants.icSearch),
+                                  const SizedBox(width: 10.0),
                                   const Expanded(
                                       child: Column(
                                         crossAxisAlignment:
@@ -243,7 +240,7 @@ class _RentPageState extends State<RentPage> {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(builder: (context) => const PlaceDetailsPage()));
                                   } ,
-                                  child: mainItem());
+                                  child: mainItem(index));
                             }),
                         const SizedBox(height: 15.0),
 
@@ -278,7 +275,7 @@ class _RentPageState extends State<RentPage> {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(builder: (context) => const PlaceDetailsPage()));
                                   } ,
-                                  child: mainItem());
+                                  child: mainItem1(index));
                             }),
                         const SizedBox(height: 15.0),
 
@@ -345,7 +342,7 @@ class _RentPageState extends State<RentPage> {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(builder: (context) => const PlaceDetailsPage()));
                                       } ,
-                                      child: recentViewItem());
+                                      child: recentViewItem(index));
                                 })),
                         const SizedBox(height: 15.0),
 
@@ -391,7 +388,7 @@ class _RentPageState extends State<RentPage> {
     );
   }
 
-  Widget mainItem() {
+  Widget mainItem(int index) {
     return Column(
       children: [
         Container(
@@ -427,8 +424,112 @@ class _RentPageState extends State<RentPage> {
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                             fontFamily: AppConstants.fontFamily)),
-                    SvgPicture.asset(ImageConstants.icFavouriteUnselected,
-                        width: 18.0, height: 16.0)
+                    InkWell(
+                      onTap: (){
+                        rentController.isFavouriteSelected[index] = !rentController.isFavouriteSelected[index];
+                        rentController.update();
+                      },
+                      child: SvgPicture.asset(rentController.isFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    ImageConstants.icLocation,
+                    width: 9.0,
+                    height: 10.0,
+                  ),
+                  const SizedBox(width: 5.0),
+                  const Text('2517 Washington Ave. Manchester, New Jersey.',
+                      style: TextStyle(
+                          color: AppColors.grey10Color,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12,
+                          fontFamily: AppConstants.fontFamily))
+                ],
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      houseDetails(label: '6', icon: ImageConstants.icBed),
+                      const SizedBox(width: 5.0),
+                      houseDetails(label: '7', icon: ImageConstants.icBath),
+                      const SizedBox(width: 5.0),
+                      houseDetails(label: '2050', icon: ImageConstants.icSqft),
+                      const SizedBox(width: 5.0),
+                    ],
+                  ),
+                  const Text('₹850,00000',
+                      style: TextStyle(
+                          color: AppColors.blackColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          fontFamily: AppConstants.fontFamily))
+                ],
+              )
+            ],
+          ),
+        ),
+        const SizedBox(height: 10.0)
+      ],
+    );
+  }
+
+  Widget mainItem1(int index) {
+    return Column(
+      children: [
+        Container(
+          width: double.maxFinite,
+          padding: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: AppColors.grey6Color),
+              borderRadius: BorderRadius.circular(25.0)),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(25.0),
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 10.0),
+                  color: AppColors.grey7Color,
+                  child: Image.asset(
+                    ImageConstants.tempHomeSample1,
+                    width: MediaQuery.of(context).size.width,
+                    height: 160.0,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Sahe Luxury House',
+                        style: TextStyle(
+                            color: AppColors.blackColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            fontFamily: AppConstants.fontFamily)),
+                    InkWell(
+                      onTap: (){
+                        rentController.isFavouriteSelected1[index] = !rentController.isFavouriteSelected1[index];
+                        rentController.update();
+                      },
+                      child: SvgPicture.asset(rentController.isFavouriteSelected1[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
                   ],
                 ),
               ),
@@ -546,7 +647,7 @@ class _RentPageState extends State<RentPage> {
     );
   }
 
-  Widget recentViewItem() {
+  Widget recentViewItem(int index) {
     return Row(
       children: [
         Container(
@@ -582,8 +683,16 @@ class _RentPageState extends State<RentPage> {
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                             fontFamily: AppConstants.fontFamily)),
-                    SvgPicture.asset(ImageConstants.icFavouriteUnselected,
-                        width: 18.0, height: 16.0)
+                    InkWell(
+                      onTap: (){
+                        rentController.isRecentFavouriteSelected[index] = !rentController.isRecentFavouriteSelected[index];
+                        rentController.update();
+                      },
+                      child: SvgPicture.asset(rentController.isRecentFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
                   ],
                 ),
               ),
@@ -666,7 +775,7 @@ class _RentPageState extends State<RentPage> {
       children: [
         Container(
           width: MediaQuery.of(context).size.width /1.5,
-          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 10.0, 8.0),
+          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 10.0, 10.0),
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: AppColors.grey6Color),

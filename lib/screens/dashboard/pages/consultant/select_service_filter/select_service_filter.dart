@@ -80,18 +80,31 @@ class _SelectServiceFilterPageState extends State<SelectServiceFilterPage> {
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: selectServiceFilterController.serviceList.length,
                             itemBuilder: (context, index) {
-                              return Container(
-                                padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8),
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: AppColors.borderColor),
-                                    borderRadius: BorderRadius.circular(25.0)),
-                                child: Text(selectServiceFilterController.serviceList[index],
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                        color: AppColors.grey14Color,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 16,
-                                        fontFamily: AppConstants.fontFamily)),
+                              return InkWell(
+                                onTap: (){
+                                  selectServiceFilterController.isSelected[index] = !selectServiceFilterController.isSelected[index];
+                                  selectServiceFilterController.update();
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 8),
+                                  decoration: BoxDecoration(
+                                    color: selectServiceFilterController.isSelected[index]
+                                        ?AppColors.btnColor
+                                        :Colors.white,
+                                      border: Border.all(color: selectServiceFilterController.isSelected[index]
+                                          ? AppColors.btnColor
+                                      :AppColors.borderColor),
+                                      borderRadius: BorderRadius.circular(25.0)),
+                                  child: Text(selectServiceFilterController.serviceList[index],
+                                      textAlign: TextAlign.center,
+                                      style:  TextStyle(
+                                          color: selectServiceFilterController.isSelected[index]
+                                              ? Colors.white
+                                          :AppColors.grey14Color,
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 16,
+                                          fontFamily: AppConstants.fontFamily)),
+                                ),
                               );
                             },
                           ),
@@ -101,19 +114,24 @@ class _SelectServiceFilterPageState extends State<SelectServiceFilterPage> {
                     ),
                   ),
                   const SizedBox(height: 20.0),
-                  Container(
-                    width: double.maxFinite,
-                    padding: const EdgeInsets.symmetric(vertical: 12.0,horizontal: 10),
-                    decoration: BoxDecoration(
-                        color: AppColors.btnColor,
-                        borderRadius: BorderRadius.circular(25.0)),
-                    child: Text('Save Filter',
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16,
-                            fontFamily: AppConstants.fontFamily)),
+                  InkWell(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.symmetric(vertical: 12.0,horizontal: 10),
+                      decoration: BoxDecoration(
+                          color: AppColors.btnColor,
+                          borderRadius: BorderRadius.circular(25.0)),
+                      child: const Text('Save Filter',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              fontFamily: AppConstants.fontFamily)),
+                    ),
                   ),
                 ],
               ),

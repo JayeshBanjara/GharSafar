@@ -332,7 +332,7 @@ style: TextStyle(
                                   itemCount: 5,
                                   itemBuilder:
                                       (BuildContext context, int index) {
-                                    return recentViewItem();
+                                    return recentViewItem(index);
                                   })),
                           const SizedBox(height: 10.0),
                         ],
@@ -346,7 +346,7 @@ style: TextStyle(
         });
   }
 
-  Widget recentViewItem() {
+  Widget recentViewItem(int index) {
     return Row(
       children: [
         Container(
@@ -382,8 +382,16 @@ style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                             fontFamily: AppConstants.fontFamily)),
-                    SvgPicture.asset(ImageConstants.icFavouriteUnselected,
-                        width: 18.0, height: 16.0)
+                    InkWell(
+                      onTap: (){
+                        brokersDetailController.isFavouriteSelected[index] = !brokersDetailController.isFavouriteSelected[index];
+                        brokersDetailController.update();
+                      },
+                      child: SvgPicture.asset(brokersDetailController.isFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
                   ],
                 ),
               ),

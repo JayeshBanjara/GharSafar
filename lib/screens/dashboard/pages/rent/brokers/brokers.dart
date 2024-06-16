@@ -84,7 +84,7 @@ class _BrokersPageState extends State<BrokersPage> {
 
   Widget brokersListItem() {
     return Container(
-          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 10.0, 8.0),
+          padding: const EdgeInsets.fromLTRB(8.0, 8.0, 10.0, 10.0),
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: AppColors.grey6Color),

@@ -115,7 +115,7 @@ class _BuildersDetailPageState extends State<BuildersDetailPage> {
 
                           Container(
                             padding: const EdgeInsets.only(left: 15),
-                              height: MediaQuery.of(context).size.height /3.58,
+                              height: MediaQuery.of(context).size.height /3.57,
                               child: ListView.separated(
                                 padding: const EdgeInsets.only(right: 15),
                                   scrollDirection: Axis.horizontal,

@@ -120,7 +120,7 @@ class _ConsultantPageState extends State<ConsultantPage> {
                               itemCount: 2,
                               itemBuilder:
                                   (BuildContext context, int index) {
-                                return consultantItem();
+                                return consultantItem(index);
                               }),
                         ),
 
@@ -137,7 +137,7 @@ class _ConsultantPageState extends State<ConsultantPage> {
                             itemCount: 2,
                             itemBuilder:
                                 (BuildContext context, int index) {
-                              return consultantItem();
+                              return consultantItem1(index);
                             }),
                       ],
                     ),
@@ -149,7 +149,7 @@ class _ConsultantPageState extends State<ConsultantPage> {
         });
   }
 
-  Widget consultantItem() {
+  Widget consultantItem(int index) {
     return Column(
       children: [
         Container(
@@ -185,8 +185,16 @@ class _ConsultantPageState extends State<ConsultantPage> {
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
                             fontFamily: AppConstants.fontFamily)),
-                    SvgPicture.asset(ImageConstants.icFavouriteUnselected,
-                        width: 18.0, height: 16.0)
+                    InkWell(
+                      onTap: (){
+                        consultantController.isFavouriteSelected[index] = !consultantController.isFavouriteSelected[index];
+                        consultantController.update();
+                      },
+                      child: SvgPicture.asset(consultantController.isFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
                   ],
                 ),
               ),
@@ -227,37 +235,169 @@ class _ConsultantPageState extends State<ConsultantPage> {
                 ),
               ),
               const SizedBox(height: 10.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 10),
-                    decoration: BoxDecoration(
-                        color: AppColors.lightBlue2,
-                        border: Border.all(color:AppColors.borderColor),
-                        borderRadius: BorderRadius.circular(15.0)),
-                    child: const Text('Home Interiors',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: AppColors.grey10Color,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            fontFamily: AppConstants.fontFamily)),
-                  ),
-                  Container(
-                      padding: const EdgeInsets.symmetric(vertical: 3,horizontal: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
                       decoration: BoxDecoration(
                           color: AppColors.lightBlue2,
-                          border: Border.all(color: AppColors.borderColor),
+                          border: Border.all(color:AppColors.borderColor),
                           borderRadius: BorderRadius.circular(15.0)),
-                      child: const Text('Property Lawyers',
+                      child: const Text('Home Interiors',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               color: AppColors.grey10Color,
                               fontWeight: FontWeight.w400,
                               fontSize: 12,
-                              fontFamily: AppConstants.fontFamily))
+                              fontFamily: AppConstants.fontFamily)),
+                    ),
+                    const SizedBox(width: 10.0),
+                    Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: AppColors.lightBlue2,
+                            border: Border.all(color: AppColors.borderColor),
+                            borderRadius: BorderRadius.circular(15.0)),
+                        child: const Text('Property Lawyers',
+                            style: TextStyle(
+                                color: AppColors.grey10Color,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                fontFamily: AppConstants.fontFamily))
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+        const SizedBox(height: 15.0)
+      ],
+    );
+  }
+
+  Widget consultantItem1(int index) {
+    return Column(
+      children: [
+        Container(
+          width: double.maxFinite,
+          padding: const EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+              color: AppColors.lightBlue2,
+              border: Border.all(color: AppColors.btnColor),
+              borderRadius: BorderRadius.circular(25.0)),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(25.0),
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 10.0),
+                  color: Colors.white,
+                  child: Image.asset(
+                    ImageConstants.imgConsultantSample,
+                    width: MediaQuery.of(context).size.width,
+                    height: 100.0,
                   ),
-                ],
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Rentickle',
+                        style: TextStyle(
+                            color: AppColors.blackColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            fontFamily: AppConstants.fontFamily)),
+                    InkWell(
+                      onTap: (){
+                        consultantController.isFavouriteSelected1[index] = !consultantController.isFavouriteSelected1[index];
+                        consultantController.update();
+                      },
+                      child: SvgPicture.asset(consultantController.isFavouriteSelected1[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(
+                      ImageConstants.icBriefcase,
+                    ),
+                    const SizedBox(width: 5.0),
+                    const Expanded(
+                      child: Text('10+ years experience',
+                          style: TextStyle(
+                              color: AppColors.textColor,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              fontFamily: AppConstants.fontFamily)),
+                    ),
+                    SvgPicture.asset(
+                      ImageConstants.icStar,
+                    ),
+                    const SizedBox(width: 5.0),
+                    InkWell(
+                      onTap:(){
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => const RatingsPage()));
+                      } ,
+                      child: const Text('10 Rating',
+                          style: TextStyle(
+                              color: AppColors.textColor,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              fontFamily: AppConstants.fontFamily)),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                      decoration: BoxDecoration(
+                          color: AppColors.lightBlue2,
+                          border: Border.all(color:AppColors.borderColor),
+                          borderRadius: BorderRadius.circular(15.0)),
+                      child: const Text('Home Interiors',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: AppColors.grey10Color,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              fontFamily: AppConstants.fontFamily)),
+                    ),
+                    const SizedBox(width: 10.0),
+                    Container(
+                        padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: AppColors.lightBlue2,
+                            border: Border.all(color: AppColors.borderColor),
+                            borderRadius: BorderRadius.circular(15.0)),
+                        child: const Text('Property Lawyers',
+                            style: TextStyle(
+                                color: AppColors.grey10Color,
+                                fontWeight: FontWeight.w400,
+                                fontSize: 12,
+                                fontFamily: AppConstants.fontFamily))
+                    ),
+                  ],
+                ),
               )
             ],
           ),
@@ -267,3 +407,4 @@ class _ConsultantPageState extends State<ConsultantPage> {
     );
   }
 }
+

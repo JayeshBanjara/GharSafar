@@ -3,6 +3,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:ghar_safar/screens/dashboard/pages/home/place_details/photo_view/photo_view.dart';
 import 'package:ghar_safar/screens/dashboard/pages/home/place_details/place_details_controller.dart';
 
 import '../../../../../utils/global.dart';
@@ -276,8 +277,14 @@ class _PlaceDetailsPageState extends State<PlaceDetailsPage> {
                               itemCount: 5,
                               itemBuilder:
                                   (BuildContext context, int index) {
-                                return Image.asset(
-                                  ImageConstants.imgGallery,
+                                return InkWell(
+                                  onTap:(){
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(builder: (context) => const PhotoViewPage()));
+                                  } ,
+                                  child: Image.asset(
+                                    ImageConstants.imgGallery,
+                                  ),
                                 );
                               }, separatorBuilder: (BuildContext context, int index) {
                                 return const SizedBox(width: 15);
@@ -513,7 +520,7 @@ class _PlaceDetailsPageState extends State<PlaceDetailsPage> {
         titlePadding: EdgeInsets.zero,
         actionsPadding: EdgeInsets.zero,
         contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15, vertical: 15),
+            horizontal: 20, vertical: 20),
         insetPadding: const EdgeInsets.all(20),
         content: SizedBox(
           width: double.maxFinite,
@@ -659,19 +666,24 @@ class _PlaceDetailsPageState extends State<PlaceDetailsPage> {
                       ])),
               const SizedBox(height: 15),
 
-              Container(
-                width: double.maxFinite,
-                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                decoration: BoxDecoration(
-                    color: AppColors.btnColor,
-                    borderRadius: BorderRadius.circular(50.0)),
-                child: const Text('Ask Question',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20,
-                        fontFamily: AppConstants.fontFamily)),
+              InkWell(
+                onTap: (){
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  width: double.maxFinite,
+                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                  decoration: BoxDecoration(
+                      color: AppColors.btnColor,
+                      borderRadius: BorderRadius.circular(50.0)),
+                  child: const Text('Ask Question',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 20,
+                          fontFamily: AppConstants.fontFamily)),
+                ),
               )
             ],
           ),

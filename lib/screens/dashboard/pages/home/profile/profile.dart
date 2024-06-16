@@ -256,6 +256,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           Expanded(
                             child: InkWell(
                               onTap: (){
+                                Navigator.of(context).pop();
                               },
                               child: Container(
                                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),

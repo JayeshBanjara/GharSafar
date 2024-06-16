@@ -12,4 +12,6 @@ class SelectServiceFilterController extends GetxController {
     'Home Interiors','Property Lawyers','Carpenter','Interior designer',
   ];
 
+  List<bool> isSelected = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,];
+
 }

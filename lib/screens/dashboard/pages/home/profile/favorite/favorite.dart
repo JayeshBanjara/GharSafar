@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../../../utils/global.dart';
+import '../../place_details/place_details.dart';
 import 'favorite_controller.dart';
 
 class FavoritePage extends StatefulWidget {
@@ -122,7 +123,12 @@ class _FavoritePageState extends State<FavoritePage> {
                         itemCount: 5,
                         itemBuilder:
                             (BuildContext context, int index) {
-                          return buyItem();
+                          return InkWell(
+                              onTap:(){
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) => const PlaceDetailsPage()));
+                              } ,
+                              child: buyItem(index));
                         })
                     :ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
@@ -131,7 +137,12 @@ class _FavoritePageState extends State<FavoritePage> {
                         itemCount: 1,
                         itemBuilder:
                             (BuildContext context, int index) {
-                          return rentItem();
+                          return InkWell(
+                              onTap:(){
+                                Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) => const PlaceDetailsPage()));
+                              } ,
+                              child: rentItem(index));
                         }),
                   ))
                 ],
@@ -141,7 +152,7 @@ class _FavoritePageState extends State<FavoritePage> {
         });
   }
 
-  Widget buyItem() {
+  Widget buyItem(int index) {
     return Column(
       children: [
         Container(
@@ -177,8 +188,16 @@ class _FavoritePageState extends State<FavoritePage> {
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                             fontFamily: AppConstants.fontFamily)),
-                    SvgPicture.asset(ImageConstants.icFavouriteUnselected,
-                        width: 18.0, height: 16.0)
+                    InkWell(
+                      onTap: (){
+                        favoriteController.isBuyFavouriteSelected[index] = !favoriteController.isBuyFavouriteSelected[index];
+                        favoriteController.update();
+                      },
+                      child: SvgPicture.asset(favoriteController.isBuyFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
                   ],
                 ),
               ),
@@ -256,7 +275,7 @@ class _FavoritePageState extends State<FavoritePage> {
     );
   }
 
-  Widget rentItem() {
+  Widget rentItem(int index) {
     return Column(
       children: [
         Container(
@@ -292,8 +311,16 @@ class _FavoritePageState extends State<FavoritePage> {
                             fontWeight: FontWeight.w500,
                             fontSize: 16,
                             fontFamily: AppConstants.fontFamily)),
-                    SvgPicture.asset(ImageConstants.icFavouriteUnselected,
-                        width: 18.0, height: 16.0)
+                    InkWell(
+                      onTap: (){
+                        favoriteController.isRentFavouriteSelected[index] = !favoriteController.isRentFavouriteSelected[index];
+                        favoriteController.update();
+                      },
+                      child: SvgPicture.asset(favoriteController.isRentFavouriteSelected[index]
+                          ?ImageConstants.icFavouriteSelected
+                          :ImageConstants.icFavouriteUnselected,
+                          width: 18.0, height: 16.0),
+                    )
                   ],
                 ),
               ),
