@@ -4,6 +4,11 @@ import 'package:ghar_safar/screens/auth/login.dart';
 import 'package:ghar_safar/screens/welcome_screen/welcome_screen_controller.dart';
 import 'package:ghar_safar/utils/global.dart';
 
+import '../broker/broker_registration/broker_registration.dart';
+import '../builder/builder_registration/builder_registration.dart';
+import '../consultant/consultant_registration.dart';
+import '../vastu_export/vastu_export_registration.dart';
+
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -90,6 +95,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             welcomeScreenController.isBrokerSelected = false;
                             welcomeScreenController.isConsultantSelected = false;
                             welcomeScreenController.isVastuSelected = false;
+
+                              Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) => const BuilderRegistrationPage()));
+
                             welcomeScreenController.update();
                           },
                           child: getChipWidget(
@@ -109,6 +118,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             welcomeScreenController.isBrokerSelected = true;
                             welcomeScreenController.isConsultantSelected = false;
                             welcomeScreenController.isVastuSelected = false;
+
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => const BrokerRegistrationPage()));
+
                             welcomeScreenController.update();
                           },
                           child: getChipWidget(
@@ -124,6 +137,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             welcomeScreenController.isBrokerSelected = false;
                             welcomeScreenController.isConsultantSelected = true;
                             welcomeScreenController.isVastuSelected = false;
+
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => const ConsultantRegistrationPage()));
+
                             welcomeScreenController.update();
                           },
                           child: getChipWidget('Consultant',
@@ -143,6 +160,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             welcomeScreenController.isBrokerSelected = false;
                             welcomeScreenController.isConsultantSelected = false;
                             welcomeScreenController.isVastuSelected = true;
+
+                            Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) => const VastuExportRegistrationPage()));
+
                             welcomeScreenController.update();
                           },
                           child: getChipWidget(
