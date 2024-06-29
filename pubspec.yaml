@@ -36,6 +36,12 @@ dependencies:
   dots_indicator: ^3.0.0
   rich_readmore: ^1.1.1
   another_transformer_page_view: ^2.0.1
+  dotted_border: ^2.1.0
+  flutter_switch: ^0.3.2
+  image_picker: ^1.1.2
+  video_player: ^2.8.7
+  chewie: ^1.8.1
+  card_swiper: ^2.0.3
   flutter:
     sdk: flutter
 
@@ -80,7 +86,27 @@ flutter:
   # "family" key with the font family name, and a "font" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # font:
+font:
+  fonts:
+    - asset: asset/font/Poppins-Black.ttf
+    - asset: asset/font/Poppins-BlackItalic.ttf
+    - asset: asset/font/Poppins-Bold.ttf
+    - asset: asset/font/Poppins-BoldItalic.ttf
+    - asset: asset/font/Poppins-ExtraBold.ttf
+    - asset: asset/font/Poppins-ExtraBoldItalic.ttf
+    - asset: asset/font/Poppins-ExtraLight.ttf
+    - asset: asset/font/Poppins-ExtraLightItalic.ttf
+    - asset: asset/font/Poppins-Italic.ttf
+    - asset: asset/font/Poppins-Light.ttf
+    - asset: asset/font/Poppins-LightItalic.ttf
+    - asset: asset/font/Poppins-Medium.ttf
+    - asset: asset/font/Poppins-MediumItalic.ttf
+    - asset: asset/font/Poppins-Regular.ttf
+    - asset: asset/font/Poppins-SemiBold.ttf
+    - asset: asset/font/Poppins-SemiBoldItalic.ttf
+    - asset: asset/font/Poppins-Thin.ttf
+    - asset: asset/font/Poppins-ThinItalic.ttf
+      weight: 700
   #   - family: Schyler
   #     font:
   #       - asset: font/Schyler-Regular.ttf

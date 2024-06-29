@@ -84,6 +84,20 @@ abstract class ImageConstants {
   static const String icTwitter = 'assets/images/ic_twitter.svg';
   static const String icSend = 'assets/images/ic_send.svg';
   static const String imgBlueRenti = 'assets/images/ic_blue_renti.png';
+  static const String icCamera = 'assets/images/ic_camera.svg';
+  static const String icUpload = 'assets/images/ic_upload.svg';
+  static const String icDownArrow = 'assets/images/ic_down_arrow.svg';
+  static const String icPlus = 'assets/images/ic_plus.svg';
+  static const String icUnselectedNotification = 'assets/images/ic_unselected_notification.svg';
+  static const String icSelectedNotification = 'assets/images/ic_selected_notification.svg';
+  static const String icUnSelectedProfile = 'assets/images/ic_unselected_profile.svg';
+  static const String icSelectedProfile = 'assets/images/ic_selected_profile.svg';
+  static const String icMooney = 'assets/images/ic_money.svg';
+  static const String icRupis = 'assets/images/ic_rupis.svg';
+  static const String plus = 'assets/images/plus.svg';
+  static const String icSelectedReels = 'assets/images/ic_selected_reels.svg';
+  static const String icUnSelectedReels = 'assets/images/ic_unselected_reels.svg';
+  static const String icShare= 'assets/images/ic_share.svg';
 }
 
 abstract class AppColors {
